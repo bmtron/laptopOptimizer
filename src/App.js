@@ -28,12 +28,13 @@ class App extends Component {
     }
   }
 
-  updateFeature(feature, newValue) {
+  updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
     this.setState({
       selected
-    });
+    })
+    console.log('clicked');
   }
 
   render() {
@@ -42,7 +43,7 @@ class App extends Component {
           .reduce((acc, curr) => acc + this.state.selected[curr].cost, 0);    
 
 
-    const features = Object.keys(this.props.features)
+    /*const features = Object.keys(this.props.features)
           .map(key => {
             const options = this.props.features[key].map((item, index) => {
               const selectedClass = item.name === this.state.selected[key].name ? 'feature__selected' : '';
@@ -64,7 +65,7 @@ class App extends Component {
                 { options }
               </ul>
             </div>
-          });      
+          });      */
 
     return (
       <div className="App">
@@ -75,7 +76,7 @@ class App extends Component {
            
         </header>      
         <main>
-          <MainForm features={features}/>
+          <MainForm features={this.props.features} selected={this.state.selected} onHandleSelect={this.updateFeature} />
           <MainSummary summary={this.state.selected} total={total} />
         </main>
       </div>
