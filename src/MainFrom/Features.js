@@ -3,8 +3,12 @@ import React, { Component } from 'react';
 export default class Features extends Component {
     
     render() {
-       
-            const options = this.props.features[this.props.id].map((item, index) => {
+        return (
+            <div className="feature" key={this.props.id}>
+            <div className="feature__name">{this.props.id}</div>
+            <ul className="feature__list">
+
+            {this.props.features[this.props.id].map((item, index) => {
               const selectedClass = item.name === this.props.selected[this.props.id].name ? 'feature__selected' : '';
               const featureClass = 'feature__option ' + selectedClass;
               return <li key={index} className="feature__item">
@@ -16,15 +20,8 @@ export default class Features extends Component {
                       .format(item.cost) })
                 </div>
               </li>
-            });
-            
-            
-          
-        return (
-            <div className="feature" key={this.props.id}>
-            <div className="feature__name">{this.props.id}</div>
-            <ul className="feature__list">
-              {options}
+            })}
+
             </ul>
           </div>
         )
