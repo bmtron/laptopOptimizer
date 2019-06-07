@@ -4,14 +4,15 @@ import SummaryOption from './SummaryOption';
 export default class MainSummary extends Component {
     
     render() {
-        const summary = Object.keys(this.props.summary)
-          .map(key => <SummaryOption key={key} id={key} summary={this.props.summary} />);
-        
         return (
             <section className="main__summary">
             <h3>NEW GREENLEAF 2018</h3>
             
-                {summary}
+                {
+                  Object.keys(this.props.summary)
+                  .map(key => <SummaryOption key={key} id={key} summary={this.props.summary} />)
+                  }
+                  
             <div className="summary__total">
               <div className="summary__total__label">Your Price: </div>
               <div className="summary__total__value">
